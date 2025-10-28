@@ -5,23 +5,28 @@
     <title>Title</title>
     <script>
 
-        let guess = 8
-        let userTry;
-        let nbTry = 0;
-while (userTry !== guess && nbTry < 3) {
-    userTry = prompt("Entrez un nombre") * 1;
-        nbTry++
-        if (userTry === guess) {
-            console.log("Bravo vous avez trouvé le nombre mystère: " + guess)
-        } else if (userTry < guess) {
-            console.log("Le chiffre est trop bas")
-        } else if (userTry > guess) {
-            console.log("Le chiffre est trop haut")
-        } else {
-            console.log("Erreur")
+        const randNumber = getRandomInt(10);
+
+        for (let i = 0; i < 3; i++) {
+            if (guess()) {
+                console.log('Bravo')
+            } else if (i === 2) {
+                console.log('Vous avez perdu')
+            }
         }
 
-}
+        function isRight(n) {
+            return n === randNumber;
+        }
+
+        function guess() {
+            const nbUser = prompt('Entrez un nombre') * 1;
+            return isRight(nbUser)
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * (max + 1));
+        }
 
     </script>
 </head>
