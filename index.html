@@ -5,22 +5,17 @@
     <title>Title</title>
     <script>
 
-const age= prompt('Quel est votre age?');
-const filmList=[
-    {name: "Lilo & Stitch", studio:"Disney"},
-    {name: "Matrix", studio:"Warner Bros"},
-    {name:"Evil Dead", studio: "Paramount Pictures"}
-]
-
-if (age < 13){
-    console.log("Vous pouvez regarder " + filmList[0].name + "de " + filmList[0].studio)
-} else if (age < 18 && age <13){
-    console.log("Vous pouvez regarder " + filmList[1].name + "de " + filmList[1].studio)
-} else if (age >= 18) {
-    console.log("Vous pouvez regarder " + filmList[2].name + "de " + filmList[2].studio)
+const a= prompt('Entrez un premier nombre');
+const b= prompt('Entrez un second nombre');
+const result=a*b;
+if (result<0) {
+    console.log("Le résultat de la multiplication " + a + " * " + b + " est négatif (" + result + ")")
+} else if (result>0) {
+    console.log("Le résultat de la multiplication " + a + " * " + b + " est positif (" + result + ")")
 } else {
-    console.log("Vous pouvez regarder tous les films")
+    console.log("Le résultat est nul (" + result + ")")
 }
+
 
     </script>
 </head>
