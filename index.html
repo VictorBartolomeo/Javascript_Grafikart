@@ -5,14 +5,22 @@
     <title>Title</title>
     <script>
 
-const notes= [
-    {name:"Victor", resultat:10},
-    {name:"Stéphane", resultat:12},
-    {name:"Tétiana", resultat: 17},
-    {name: "Jean", resultat: 15}
-]
-for (let i in notes){
-    console.log(notes[i].name + " a eu : " + notes[i].resultat)
+        let guess = 8
+        let userTry;
+        let nbTry = 0;
+while (userTry !== guess && nbTry < 3) {
+    userTry = prompt("Entrez un nombre") * 1;
+        nbTry++
+        if (userTry === guess) {
+            console.log("Bravo vous avez trouvé le nombre mystère: " + guess)
+        } else if (userTry < guess) {
+            console.log("Le chiffre est trop bas")
+        } else if (userTry > guess) {
+            console.log("Le chiffre est trop haut")
+        } else {
+            console.log("Erreur")
+        }
+
 }
 
     </script>
