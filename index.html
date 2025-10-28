@@ -8,13 +8,15 @@
 const a= prompt('Entrez un premier nombre');
 const b= prompt('Entrez un second nombre');
 const result=a*b;
+let signe;
 if (result<0) {
-    console.log("Le résultat de la multiplication " + a + " * " + b + " est négatif (" + result + ")")
+    signe="négatif"
 } else if (result>0) {
-    console.log("Le résultat de la multiplication " + a + " * " + b + " est positif (" + result + ")")
+    signe="positif"
 } else {
-    console.log("Le résultat est nul (" + result + ")")
+    signe="nul"
 }
+console.log(`Le résultat de la multiplication ${a} * ${b} est ${signe} (${result})`)
 
 
     </script>
