@@ -5,12 +5,15 @@
     <title>Title</title>
     <script>
 
-        let age=18
-        let suffix;
-        if (age>18){
-            let suffix='hello'
-        }
-        console.log(suffix)
+const notes= [
+    {name:"Victor", resultat:10},
+    {name:"Stéphane", resultat:12},
+    {name:"Tétiana", resultat: 17},
+    {name: "Jean", resultat: 15}
+]
+for (let i in notes){
+    console.log(notes[i].name + " a eu : " + notes[i].resultat)
+}
 
     </script>
 </head>
