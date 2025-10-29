@@ -5,29 +5,27 @@
     <title>Title</title>
     <script>
 
-        const randNumber = getRandomInt(10);
-        console.log(randNumber)
+        function isPalindrome(word) {
+            const letters= word.split('').reverse()
+            letters.reverse()
+            const reversedWord= letters.join('')
+            return word.toUpperCase() === reversedWord.toUpperCase()
+        }
+
+        const words = {
+            kayak: true,
+            SOS: true,
+            Kayak: true,
+            Bonjour: false,
+        }
         
-        for (let i = 0; i < 3; i++) {
-            if (guess()) {
-                console.log('Bravo')
-            } else if (i === 2) {
-                console.log('Vous avez perdu')
+        for (let word in words) {
+            if (isPalindrome(word) !== words[word]) {
+                console.error(`isPalindrome(${word}`)
             }
         }
 
-        function isRight(n) {
-            return n === randNumber;
-        }
 
-        function guess() {
-            const nbUser = prompt('Entrez un nombre') * 1;
-            return isRight(nbUser)
-        }
-
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * (max + 1));
-        }
 
     </script>
 </head>
