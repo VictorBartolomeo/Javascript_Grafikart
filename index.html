@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
     <script>
+      const b = new Book("Seigneur des anneaux", 200);
+      console.log(b.page);
+      b.nextPage();
+      console.log(b.page);
+      b.close();
+      console.log(b.page);
 
-const b = new Book('Seigneur des anneaux', 200);
-console.log(b.page)
-b.nextPage()
-console.log(b.page)
-b.close()
-console.log(b.page)
+      const l = new Library();
+      l.addBook(b);
+      l.addBooks([
+        new Book("Ready player one", 100),
+        new Book("Oui-oui", 10),
+        new Book("Sillage", 50),
+      ]);
+      console.log(l.findBooksByLetter("S"));
 
-const l = new Library()
-l.addBook(b)
-l.addBooks([
-    new Book('Ready player one', 100),
-    new Book('Oui-oui', 10),
-    new Book('Sillage', 50),
-])
-console.log(l.findBooksByLetter('S'))
-
-class Book {
-    constructor(title, totalPages) {
-        this.title = title;
-        this.totalPages = totalPages;
-        this.page = 0;
-    }
-
-    nextPage() {
-        if (this.page < this.totalPages) {
-            this.page++;
+      class Book {
+        constructor(title, totalPages) {
+          this.title = title;
+          this.totalPages = totalPages;
+          this.page = 0;
         }
-    }
 
-    close() {
-        this.page = 0;
-    }
-}
+        nextPage() {
+          if (this.page < this.totalPages) {
+            this.page++;
+          }
+        }
 
-class Library {
-    constructor() {
-        this.books = [];
-    }
+        close() {
+          this.page = 0;
+        }
+      }
 
-    addBook(book) {
-        this.books.push(book);
-    }
+      class Library {
+        #books = [];
 
-    addBooks(books) {
-        this.books.push(...books);
-    }
+        addBook(book) {
+          this.#books.push(book);
+        }
 
-    findBooksByLetter(letter) {
-        return this.books.filter(book => book.title.startsWith(letter));
-    }
-}
+        addBooks(books) {
+          this.#books.push(...books);
+        }
+
+        findBooksByLetter(letter) {
+          return this.#books.filter((book) => book.title.startsWith(letter));
+        }
+      }
     </script>
-</body>
+  </head>
+  <body>
+    <h1>Ma Bibliothèque</h1>
+  </body>
 </html>
