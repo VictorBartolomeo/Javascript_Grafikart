@@ -5,41 +5,38 @@
     <title>Title</title>
     <script>
 
-// La propriété sera automatiquement placée sur l'objet lors de sa construction
-    notes = []
+const r = new Rectangle(10, 20);
+console.log(r.perimeter) // 60
+console.log(r.isValid) // true
+const r2 = new Rectangle(-10, 20);
+console.log(r2.isValid) // false
+const c = new Square(10); 
+console.log(c.perimeter) // 40
+console.log(r.isBiggerThan(c)) // true
 
-    // La méthode constructor permet d'indiquer comment le type sera construit
-    constructor (firstname, lastname) {
-        // this permettra d'accéder à l'objet construit
-        this.firstname = firstname
-        this.lastname = lastname
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
     }
 
-    // On peut ajouter des méthodes, this fera référence à l'objet sur lequel on utilisera la méthode
-    addNote (note) {
-        this.notes.push(note)
+    get perimeter() {
+        return 2 * (this.width + this.height);
     }
 
-    // On peut créer des getters, ce sont des sortes de propriétés magiques qui ont une logique
-    get fullname () {
-        return `${this.firstname} ${this.lastname}`
+    get isValid() {
+        return this.width > 0 && this.height > 0;
     }
 
-    get moyenne () {
-        let sum = 0
-        for (let note of this.notes) {
-            sum += note
-        }
-        return sum / this.notes.length
+    isBiggerThan(shape) {
+        return this.perimeter > shape.perimeter;
     }
+}
 
-    // On peut aussi créer des setters pour ajouter de la logique
-    set name (str) {
-        const items = str.split(' ')
-        this.firstname = items[0]
-        this.lastname = items[1]
+class Square extends Rectangle {
+    constructor(side) {
+        super(side, side);
     }
-
 }
 
     </script>
