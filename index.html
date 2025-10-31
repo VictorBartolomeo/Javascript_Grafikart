@@ -5,43 +5,57 @@
     <title>Title</title>
     <script>
 
-const r = new Rectangle(10, 20);
-console.log(r.perimeter) // 60
-console.log(r.isValid) // true
-const r2 = new Rectangle(-10, 20);
-console.log(r2.isValid) // false
-const c = new Square(10); 
-console.log(c.perimeter) // 40
-console.log(r.isBiggerThan(c)) // true
+const b = new Book('Seigneur des anneaux', 200);
+console.log(b.page)
+b.nextPage()
+console.log(b.page)
+b.close()
+console.log(b.page)
 
-class Rectangle {
-    constructor(width, height) {
-        this.width = width;
-        this.height = height;
+const l = new Library()
+l.addBook(b)
+l.addBooks([
+    new Book('Ready player one', 100),
+    new Book('Oui-oui', 10),
+    new Book('Sillage', 50),
+])
+console.log(l.findBooksByLetter('S'))
+
+class Book {
+    constructor(title, totalPages) {
+        this.title = title;
+        this.totalPages = totalPages;
+        this.page = 0;
     }
 
-    get perimeter() {
-        return 2 * (this.width + this.height);
+    nextPage() {
+        if (this.page < this.totalPages) {
+            this.page++;
+        }
     }
 
-    get isValid() {
-        return this.width > 0 && this.height > 0;
-    }
-
-    isBiggerThan(shape) {
-        return this.perimeter > shape.perimeter;
+    close() {
+        this.page = 0;
     }
 }
 
-class Square extends Rectangle {
-    constructor(side) {
-        super(side, side);
+class Library {
+    constructor() {
+        this.books = [];
+    }
+
+    addBook(book) {
+        this.books.push(book);
+    }
+
+    addBooks(books) {
+        this.books.push(...books);
+    }
+
+    findBooksByLetter(letter) {
+        return this.books.filter(book => book.title.startsWith(letter));
     }
 }
-
     </script>
-</head>
-<body>
-<h1>Hello World</h1>
 </body>
 </html>
