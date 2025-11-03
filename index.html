@@ -4,62 +4,18 @@
     <meta charset="UTF-8" />
     <title>Title</title>
     <script>
-      const b = new Book("Seigneur des anneaux", 200);
-      console.log(b.page);
-      b.nextPage();
-      console.log(b.page);
-      b.close();
-      console.log(b.page);
+      let nombre = 10;
 
-      const l = new Library();
-      l.addBook(b);
-      l.addBooks([
-        new Book("Ready player one", 100),
-        new Book("Oui-oui", 10),
-        new Book("Sillage", 50),
-      ]);
-      console.log(l.findBooksByLetter("S"));
-
-      class Book {
-        #page = 1;
-
-        constructor(title, pages) {
-          this.title = title;
-          this.pages = pages;
-        }
-
-        get page() {
-          return this.#page;
-        }
-
-        nextPage() {
-          if (this.#page < this.pages) {
-            this.#page++;
-          }
-        }
-
-        close() {
-          this.#page = 1;
+      function decompte() {
+        console.log(nombre);
+        nombre--;
+        if (nombre <= 0) {
+          console.log("Terminé");
+          clearInterval(intervalId);
         }
       }
 
-      class Library {
-        #books = [];
-
-        addBook(book) {
-          this.#books.push(book);
-        }
-
-        addBooks(books) {
-          books.forEach(this.addBook, this);
-        }
-
-        findBooksByLetter(letter) {
-          return this.#books.filter(
-            (book) => book.title[0].toLowerCase() === letter.toLowerCase()
-          );
-        }
-      }
+      const intervalId = setInterval(decompte, 1000);
     </script>
   </head>
   <body>
